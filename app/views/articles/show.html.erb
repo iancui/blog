@@ -1,0 +1,29 @@
+<div class="row">
+  <h1>灯火辉煌处</h1>
+      <div class="row">
+        <div class="col-small-5">
+        title: <%= @title %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-small-7">
+        <%= @text %>
+      </div>
+      </div>
+      </br>
+
+  <div class="row">
+    <div class="col-md-3">
+      <br/><br/><br/><br/><br/><br/>
+      <% unless @comments.blank? %>
+          <% @comments.each do |comment|  %>
+              <h6><%= comment.comment_text %></h6>
+              <h6>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                <%= "发表于#{comment.created_at.to_s.gsub(/UTC/, '')}" %>
+              </h6>
+          <% end %>
+      <% end %>
+    </div>
+  </div>
+    <%= render 'comment' %>
+</div>
