@@ -4,7 +4,6 @@ class CreateArticles < ActiveRecord::Migration
       t.string :title
       t.text :text
       t.string :delete_flg
-      t.integer :comment_id
       t.integer :user_id
       t.datetime :created_at
       t.datetime :update_at

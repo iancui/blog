@@ -10,7 +10,10 @@ class ArticlesController < ApplicationController
   end
 
   def show
-      @article = Article.find(params[:id])
+      article = Article.find(params[:id])
+      @title = article.title
+      @text = article.text
+      @comments = article.comments
   end
 
   def create
@@ -23,6 +26,12 @@ class ArticlesController < ApplicationController
     end
   end
 
+  def comment
+    comment = Comment.create(comment_text: params[:comment_text],
+                             article_id: params[:id],
+                             user_id: "")
+    redirect_to article_path(params[:id])
+  end
   private
     def article_params
       params.require(:article).permit(:title,:text)

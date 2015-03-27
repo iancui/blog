@@ -17,7 +17,6 @@ ActiveRecord::Schema.define(version: 20150325145617) do
     t.string   "title"
     t.text     "text"
     t.string   "delete_flg"
-    t.integer  "comment_id"
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "update_at"
@@ -28,6 +27,8 @@ ActiveRecord::Schema.define(version: 20150325145617) do
   create_table "comments", force: :cascade do |t|
     t.string   "comment_text"
     t.string   "delete_flg"
+    t.integer  "article_id"
+    t.integer  "user_id"
     t.datetime "created_at",   null: false
     t.datetime "update_at"
     t.integer  "version"
