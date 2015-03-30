@@ -1,21 +1,35 @@
 <div class="row">
   <h1 class="text-center">添加微博</h1>
-  <%= form_for @article do |f| %>
+  <%= form_tag(articles_path,method: 'post' ) do %>
+
     <div class="col-small-5 text-right"> <label>标题</label></div>
-      <div class="col-samll-7"> <%= f.text_field :title,size:30 %></div>
+      <div class="col-samll-7"> <%= text_field_tag :title, @article.title, size:30 %></div>
 
 </div>
+<div class="row">
+    <div class="col-small-5 text-right"> <label>我的名字:</label></div>
+    <div class="col-small-7"><%= text_field_tag :my_name, @my_name, size:30 %></div>
+</div>
+      <div class="row">
+        <div class="col-small-7">
+          <div class="col-small-5 text-left"><label>类型</label></div>
+           <%= select_tag :article_type, options_from_collection_for_select( @article_types, 'second', 'first', @article_type) %>
+        </div>
+
+      </div>
       <div class="row">
         <div class="col-small-5 text-left">
           <label>内容</label>
         </div>
       </div>
+
       <div class="row">
         <div class="col-small-7">
-          <%= f.text_area  :text,cols: 100, rows: 20 , wrap: "hard" %>
+          <%= text_area_tag :text, @article.text, cols: 100, rows: 20 %>
         </div>
       </div>
       <div class="row">
-        <div class="col-small-2-offset-2 end"> <%= submit_tag '添加' %></div>
+        <div class="col-small-2-offset-2 end"> <%= submit_tag "提交", class: "button"%></div>
       </div>
-  <% end %>
+<% end %>
+
